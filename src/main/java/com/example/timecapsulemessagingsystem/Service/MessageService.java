@@ -12,7 +12,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Optional;
 
 @Service
@@ -23,11 +22,6 @@ public class MessageService {
     private final ModelMapper modelMapper;
     private final UserRepo userRepo;
 
-    public MessageDto addMessage(MessageDto messageDto) {
-        MessageData messageData = modelMapper.map(messageDto,MessageData.class);
-        MessageData save = messageRepo.save(messageData);
-        return modelMapper.map(save,MessageDto.class);
-    }
 
     public String sendMessage(MessageDto messageDto){
         if (messageDto.getMessage() == null || messageDto.getMessage().trim().isEmpty()) {
@@ -48,9 +42,7 @@ public class MessageService {
 
     @Scheduled(fixedRate = 60 * 1000)
     public void processPendingMessages() {
-        ZoneId zone = ZoneId.of("Asia/Kolkata");
         LocalDateTime now = LocalDateTime.now();
-        System.out.println("=== Scheduler running at: " + now + " (" + zone + ") ===");
 
         var pendingMessages = messageRepo.findByStatusOfMessageAndDateTimeBefore(StatusOfMessage.PENDING, now);
         System.out.println("Found pending messages: " + pendingMessages.size());

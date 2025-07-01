@@ -13,11 +13,6 @@ import org.springframework.web.bind.annotation.*;
 public class MessageController {
     private final MessageService messageService;
 
-    @PostMapping("/add")
-    public ResponseEntity<MessageDto> addMessage(@RequestBody MessageDto messageDto){
-        return ResponseEntity.ok(messageService.addMessage(messageDto));
-    }
-
     @PostMapping("/schedule")
     public ResponseEntity<String> sendMessage(@RequestBody MessageDto messageDto){
         return ResponseEntity.ok(messageService.sendMessage(messageDto));
