@@ -21,4 +21,5 @@ public class MessageData {
     private String senderName;
     private String receiverName;
     private LocalDateTime dateTime;
+    private String message;
 }
