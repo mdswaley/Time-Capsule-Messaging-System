@@ -1,6 +1,5 @@
 package com.example.timecapsulemessagingsystem.DTO;
 
-import com.example.timecapsulemessagingsystem.Entity.StatusOfMessage;
 import lombok.Data;
 
 import java.time.LocalDateTime;

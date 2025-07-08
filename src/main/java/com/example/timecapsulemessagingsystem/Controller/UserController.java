@@ -3,7 +3,6 @@ package com.example.timecapsulemessagingsystem.Controller;
 import com.example.timecapsulemessagingsystem.Entity.UserEntity;
 import com.example.timecapsulemessagingsystem.Service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

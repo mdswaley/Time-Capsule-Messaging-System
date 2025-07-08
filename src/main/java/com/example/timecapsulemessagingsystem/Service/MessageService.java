@@ -12,6 +12,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -40,7 +41,7 @@ public class MessageService {
         return "Message sent to " + receiverOpt.get().getName();
     }
 
-    @Scheduled(fixedRate = 60 * 1000)
+    @Scheduled(fixedRate = 1000)
     public void processPendingMessages() {
         LocalDateTime now = LocalDateTime.now();
 
@@ -57,4 +58,7 @@ public class MessageService {
     }
 
 
+    public List<MessageData> getAllMessage() {
+        return messageRepo.findAll();
+    }
 }
